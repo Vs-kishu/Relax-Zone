@@ -7,7 +7,7 @@ const SuggestedVideos = () => {
   if (!searchedMovie) return null;
   console.log(searchedMovie);
   return (
-    <div className="text-white">
+    <div className="text-white mt-5">
       <MoviesList moviesCollection="Searched results" movies={searchedMovie} />
     </div>
   );

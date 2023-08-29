@@ -51,14 +51,16 @@ const Header = () => {
   return (
     <header className="absolute top-0 left-0 flex items-center justify-between z-50 pr-20 w-full">
       <img src={BG_IMAGE} alt="logo" className="sh-15 sm:h-20" />
-      <button
-        type="button"
-        onClick={() => dispatch(setAIsearch())}
-        className=" flex justify-center items-center gap-2 px-3 py-2 w-[20%] bg-gray-500 hover:bg-white rounded-lg"
-      >
-        <FaSearchengin />
-        Search
-      </button>
+      {user && (
+        <button
+          type="button"
+          onClick={() => dispatch(setAIsearch())}
+          className=" flex justify-center items-center gap-2 px-3 py-2 w-[20%] bg-gray-500 hover:bg-white rounded-lg"
+        >
+          <FaSearchengin />
+          Search
+        </button>
+      )}
       {user && (
         <div className="flex items-center gap-10">
           <span className="text-white font-bold text-xl">
