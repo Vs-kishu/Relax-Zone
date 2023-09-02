@@ -10,20 +10,24 @@ const HeroVideo = () => {
   return heroVideo ? (
     <section className="relative borde-4 border-red-600 ">
       <iframe
-        className="aspect-video w-full -mt-14"
+        className="relative aspect-video w-full mt-5 -z-20 md:-mt-22"
         src={`https://www.youtube.com/embed/${heroVideo?.key}?autoplay=1&mute=1&controls=0&showinfo=0&loop=1&disablekb=1&rel=0`}
         title="YouTube video player"
         allow="autoplay; encrypted-media"
       ></iframe>
-      <div className="absolute w-full h-screen top-0 mt-14 bg-gradient-to-t from-black">
-        <div className="text-white absolute bottom-[30%] left-10">
-          <h1 className="text-6xl font-bold">{heroInfo?.original_title}</h1>
-          <p className="w-2/5 mt-5 mb-10">{heroInfo?.overview}</p>
-          <div className="flex items-center gap-14 ">
-            <button className="flex  items-center justify-center gap-2 px-5 py-3   text-2xl text-black bg-white rounded-lg w-[150px] hover:bg-slate-200 text-center">
+      <div className="absolute bottom-10 md:bottom-[30%] w-3/4 md:w-1/2">
+        <div className="text-white p-3 md:pl-10">
+          <h1 className="text-lg md:text-6xl font-bold">
+            {heroInfo?.original_title}
+          </h1>
+          <p className="max-md:hidden w-full mt-5 mb-10">
+            {heroInfo?.overview}
+          </p>
+          <div className="flex items-center gap-5 md:gap-14 max-sm:mt-5 ">
+            <button className="flex  items-center justify-center gap-2 px-3 md:px-5 py-1 md:py-3 text-sm  md:text-2xl text-black bg-white rounded-lg md:w-[150px] hover:bg-slate-200 text-center">
               <FaPlay /> Play
             </button>
-            <button className="flex  items-center justify-center gap-2 px-5 py-3 text-2xl text-black bg-gray-500 rounded-lg  hover:bg-white text-center">
+            <button className="flex  items-center justify-center px-3 md:px-5 py-1 md:py-3 gap-2  text-sm md:text-2xl text-black bg-gray-500 rounded-lg  hover:bg-white text-center">
               <FaInfoCircle />
               More Info
             </button>

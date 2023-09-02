@@ -73,7 +73,7 @@ const Login = () => {
       />
       <form
         onSubmit={onSubmit}
-        className="bg-black bg-opacity-90 w-full md:w-[400px]  text-white flex flex-col  gap-10 p-10"
+        className="bg-black max-sm:pt-20 bg-opacity-90 w-full md:w-[400px] max-sm:h-screen  text-white flex flex-col gap-5 sm:gap-10 p-6 sm:p-10"
       >
         <h1 className="font-bold text-3xl">{signIn ? "Sign IN" : "Sign Up"}</h1>
         {!signIn && (
@@ -102,7 +102,7 @@ const Login = () => {
         </button>
         {error && <p className="text-red-600">{error}</p>}
 
-        <div className="flex items-center justify-between px-3 -mt-8 ">
+        <div className="flex items-center justify-between px-3 sm:-mt-8 ">
           <div className="flex items-center gap-2">
             <input
               type="checkbox"

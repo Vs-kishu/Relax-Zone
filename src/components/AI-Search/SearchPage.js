@@ -13,7 +13,7 @@ const SearchPage = () => {
           alt="background"
         />
       </div>
-      <div className="absolute top-[20%] w-full ">
+      <div className="absolute top-[20%] h-full w-full ">
         <SearchBar />
         <SuggestedVideos />
       </div>
