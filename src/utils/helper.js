@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { OPENAI_KEY } from "../constants/constants";
 
 export const options = {
   method: "GET",
@@ -9,6 +10,6 @@ export const options = {
 };
 
 export const openai = new OpenAI({
-  apiKey: process.env.REACT_APP_APIKEY,
+  apiKey: OPENAI_KEY,
   dangerouslyAllowBrowser: true, // defaults to process.env["OPENAI_API_KEY"]
 });

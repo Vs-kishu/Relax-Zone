@@ -7,8 +7,12 @@ const MovieCard = ({ movie }) => {
   return (
     <>
       {poster_path && (
-        <div className="w-32">
-          <img src={tmbd_img_url + poster_path} alt={original_title} />
+        <div className="w-32 ">
+          <img
+            className="object-contain"
+            src={tmbd_img_url + poster_path}
+            alt={original_title}
+          />
         </div>
       )}
     </>
