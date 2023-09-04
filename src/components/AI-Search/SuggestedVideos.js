@@ -3,12 +3,17 @@ import { useSelector } from "react-redux";
 import MoviesList from "../MoviesList";
 
 const SuggestedVideos = () => {
-  const { searchedMovie } = useSelector((store) => store.AIsearch);
-  if (!searchedMovie) return null;
-  console.log(searchedMovie);
+  const { movieResults, movieNames } = useSelector((store) => store.AIsearch);
+  if (!movieResults) return null;
   return (
-    <div className="text-white mt-5">
-      <MoviesList moviesCollection="Searched results" movies={searchedMovie} />
+    <div className="text-white mt-5 flex flex-col">
+      {movieNames.map((movieName, index) => (
+        <MoviesList
+          key={movieName[index]}
+          moviesCollection={movieName}
+          movies={movieResults[index]}
+        />
+      ))}
     </div>
   );
 };

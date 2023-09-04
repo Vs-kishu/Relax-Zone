@@ -10,7 +10,7 @@ const HeroVideo = () => {
   return heroVideo ? (
     <section className="relative borde-4 border-red-600 ">
       <iframe
-        className="relative aspect-video w-full mt-5 -z-20 md:-mt-22"
+        className="relative aspect-video w-full mt-5 md:-mt-22"
         src={`https://www.youtube.com/embed/${heroVideo?.key}?autoplay=1&mute=1&controls=0&showinfo=0&loop=1&disablekb=1&rel=0`}
         title="YouTube video player"
         allow="autoplay; encrypted-media"

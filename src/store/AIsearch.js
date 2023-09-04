@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isSearched: false,
-  searchedMovie: null,
+  movieResults: null,
+  movieNames: null,
 };
 const AIslice = createSlice({
   name: "AIsearch",
@@ -10,12 +11,14 @@ const AIslice = createSlice({
     setAIsearch: (state) => {
       state.isSearched = !state.isSearched;
     },
-    setSearchMovie: (state, action) => {
-      state.searchedMovie = action.payload;
+    searchedResults: (state, action) => {
+      const { movieNames, movieResults } = action.payload;
+      state.movieNames = movieNames;
+      state.movieResults = movieResults;
     },
   },
 });
 
-export const { setAIsearch, setSearchMovie } = AIslice.actions;
+export const { setAIsearch, searchedResults } = AIslice.actions;
 
 export default AIslice.reducer;

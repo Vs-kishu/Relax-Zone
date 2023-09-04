@@ -1,35 +1,52 @@
 import React, { useRef } from "react";
 import { openai, options } from "../../utils/helper";
 import { useDispatch } from "react-redux";
-import { setSearchMovie } from "../../store/AIsearch";
+import { searchedResults } from "../../store/AIsearch";
 
 const SearchBar = () => {
   const input = useRef();
   const dispatch = useDispatch();
 
-  // const handleAIsearch = async (e) => {
-  //   e.preventDefault();
-  //   const completion = await openai.chat.completions.create({
-  //     messages: [{ role: "user", content: "Say this is a test" }],
-  //     model: "gpt-3.5-turbo",
-  //   });
+  const handleAIsearch = async () => {
+    const gptQuery =
+      "Act as a Movie Recommendation system and suggest some movies for the query : " +
+      input.current.value +
+      ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
 
-  //   console.log(completion.choices);
-  // };
+    const gptResults = await openai.chat.completions.create({
+      messages: [{ role: "user", content: gptQuery }],
+      model: "gpt-3.5-turbo",
+    });
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
+    if (!gptResults.choices) {
+      <div>no movies found</div>;
+    }
+
+    console.log(gptResults.choices?.[0]?.message?.content);
+
+    const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");
+
+    const promiseArray = gptMovies.map((movie) => handleSearch(movie));
+
+    const tmdbResults = await Promise.all(promiseArray);
+
+    dispatch(
+      searchedResults({ movieNames: gptMovies, movieResults: tmdbResults })
+    );
+  };
+
+  const handleSearch = async (movie) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${input.current.value}&include_adult=false&page=1`,
+      `https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&page=1`,
       options
     );
     const json = await data.json();
-    dispatch(setSearchMovie(json.results));
+    return json.results;
   };
 
   return (
     <form
-      onSubmit={handleSearch}
+      onSubmit={(e) => e.preventDefault()}
       className=" mx-auto w-11/12 md:w-2/3 flex justify-center"
     >
       <input
@@ -37,7 +54,10 @@ const SearchBar = () => {
         ref={input}
         className="py-2 px-6 border-2 rounded-l-lg w-full shadow-md shadow-red-700 border-red-700"
       />
-      <button className=" text-white font-semibold px-4 rounded-r-lg bg-red-700 hover:bg-red-500 text-center shadow-md shadow-red-700 ">
+      <button
+        onClick={handleAIsearch}
+        className=" text-white font-semibold px-4 rounded-r-lg bg-red-700 hover:bg-red-500 text-center shadow-md shadow-red-700 "
+      >
         Search
       </button>
     </form>

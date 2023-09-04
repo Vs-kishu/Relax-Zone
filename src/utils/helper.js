@@ -9,6 +9,6 @@ export const options = {
 };
 
 export const openai = new OpenAI({
-  apiKey: "openai api",
+  apiKey: process.env.REACT_APP_APIKEY,
   dangerouslyAllowBrowser: true, // defaults to process.env["OPENAI_API_KEY"]
 });
