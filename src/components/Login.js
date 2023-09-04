@@ -14,6 +14,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const [signIn, setSign] = useState(true);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false); // State to track loading
+
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -62,6 +64,24 @@ const Login = () => {
         });
     }
   };
+
+  const handleGuestLogin = () => {
+    setLoading(true);
+
+    const guestEmail = "guest@gmail.com";
+    const guestPassword = "guestlogin";
+
+    signInWithEmailAndPassword(auth, guestEmail, guestPassword)
+      .then((userCredential) => {})
+      .catch((error) => {
+        const errorMessage = error.message;
+        setError(errorMessage);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   return (
     <section className="relative flex justify-center items-center bg-black bg-opacity-50  h-screen">
       <Header />
@@ -100,7 +120,17 @@ const Login = () => {
         <button className="w-full bg-[#e50914] hover:bg-opacity-70 py-4 rounded-md mt-10 font-semibold text-lg">
           {signIn ? "Sign In" : "Sign up"}
         </button>
-        {error && <p className="text-red-600">{error}</p>}
+        {signIn && (
+          <button
+            onClick={handleGuestLogin}
+            className={`w-full bg-[#e50914] hover:bg-opacity-70 py-4 rounded-md font-semibold text-lg ${
+              loading ? "cursor-not-allowed" : ""
+            }`}
+            disabled={loading}
+          >
+            {loading ? "Logging In..." : "Guest LogIn"}
+          </button>
+        )}
 
         <div className="flex items-center justify-between px-3 sm:-mt-8 ">
           <div className="flex items-center gap-2">

@@ -85,10 +85,15 @@ const Header = () => {
             className="h-10 rounded-full cursor-pointer"
           />
           {isMenuOpen && (
-            <div className="absolute right-2 p-2 rounded-md top-14   bg-white">
+            <div className="absolute right-10 p-2 rounded-md top-16   bg-white">
               <ul className="font-semibold ">
-                <li className="hover:bg-slate-400">{user?.name}</li>
-                <li className="hover:bg-slate-400" onClick={handleLogout}>
+                <li className="hover:bg-slate-400 p-2 cursor-pointer rounded-lg">
+                  {user?.name}
+                </li>
+                <li
+                  className="hover:bg-slate-400 p-2 cursor-pointer rounded-lg"
+                  onClick={handleLogout}
+                >
                   Logout
                 </li>
               </ul>
