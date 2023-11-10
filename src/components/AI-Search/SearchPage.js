@@ -1,15 +1,14 @@
-import React from "react";
-import { BG_IMAGE } from "../../constants/constants";
-import SearchBar from "./SearchBar";
-import SuggestedVideos from "./SuggestedVideos";
-import Footer from "../Footer";
+import React from 'react';
+import { BG_IMAGE } from '../../constants/constants';
+import SearchBar from './SearchBar';
+import SuggestedVideos from './SuggestedVideos';
 
 const SearchPage = () => {
   return (
     <div className="flex justify-center">
-      <div className="fixed bg-black blur-lg">
+      <div className="fixed bg-black  ">
         <img
-          className="h-screen object-contain"
+          className="h-screen object-contain w-full blur-xl"
           src={BG_IMAGE}
           alt="background"
         />
@@ -18,7 +17,6 @@ const SearchPage = () => {
         <SearchBar />
         <SuggestedVideos />
       </div>
-      <Footer />
     </div>
   );
 };

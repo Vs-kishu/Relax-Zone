@@ -1,30 +1,33 @@
-import React, { useRef } from "react";
-import { openai, options } from "../../utils/helper";
-import { useDispatch } from "react-redux";
-import { searchedResults } from "../../store/AIsearch";
+import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  removeLoadingState,
+  searchedResults,
+  setLoadingState,
+} from '../../store/AIsearch';
+import { openai, options } from '../../utils/helper';
 
 const SearchBar = () => {
   const input = useRef();
   const dispatch = useDispatch();
-
   const handleAIsearch = async () => {
+    dispatch(setLoadingState());
+    console.log('started');
     const gptQuery =
-      "Act as a Movie Recommendation system and suggest some movies for the query : " +
+      'Act as a Movie Recommendation system and suggest some movies for the query : ' +
       input.current.value +
-      ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
+      '. only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya';
 
     const gptResults = await openai.chat.completions.create({
-      messages: [{ role: "user", content: gptQuery }],
-      model: "gpt-3.5-turbo",
+      messages: [{ role: 'user', content: gptQuery }],
+      model: 'gpt-3.5-turbo',
     });
 
     if (!gptResults.choices) {
       <div>no movies found</div>;
     }
 
-    console.log(gptResults.choices?.[0]?.message?.content);
-
-    const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");
+    const gptMovies = gptResults.choices?.[0]?.message?.content.split(',');
 
     const promiseArray = gptMovies.map((movie) => handleSearch(movie));
 
@@ -33,6 +36,7 @@ const SearchBar = () => {
     dispatch(
       searchedResults({ movieNames: gptMovies, movieResults: tmdbResults })
     );
+    dispatch(removeLoadingState());
   };
 
   const handleSearch = async (movie) => {

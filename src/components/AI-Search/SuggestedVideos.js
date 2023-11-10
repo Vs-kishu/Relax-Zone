@@ -1,10 +1,21 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import MoviesList from "../MoviesList";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import MoviesList from '../MoviesList';
+import { ShimmerCards } from '../Shimmer';
 
 const SuggestedVideos = () => {
-  const { movieResults, movieNames } = useSelector((store) => store.AIsearch);
-  if (!movieResults) return null;
+  const { movieResults, movieNames, isLoading } = useSelector(
+    (store) => store.AIsearch
+  );
+  if (isLoading)
+    return (
+      <>
+        <ShimmerCards />
+        <ShimmerCards />
+        <ShimmerCards />
+      </>
+    );
+  if (!movieResults) return <h1>Not Found</h1>;
   return (
     <div className="text-white mt-5 flex flex-col">
       {movieNames.map((movieName, index) => (
