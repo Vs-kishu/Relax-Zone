@@ -7,7 +7,7 @@ const MovieCard = ({ movie }) => {
   return (
     <>
       {poster_path && (
-        <div className="w-40s hover:scale-125 transition-all">
+        <div className="w-40 hover:scale-125 transition-all">
           <img
             className="object-contain"
             src={tmbd_img_url + poster_path}
