@@ -12,7 +12,6 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const handleAIsearch = async () => {
     dispatch(setLoadingState());
-    console.log('started');
     const gptQuery =
       'Act as a Movie Recommendation system and suggest some movies for the query : ' +
       input.current.value +
@@ -57,6 +56,7 @@ const SearchBar = () => {
         type="text"
         ref={input}
         className="py-2 px-6 border-2 rounded-l-lg w-full shadow-md shadow-red-700 border-red-700"
+        placeholder="Ask any types of movies with better prompt..... e.g. Mountain Movies, Haunted movies  "
       />
       <button
         onClick={handleAIsearch}

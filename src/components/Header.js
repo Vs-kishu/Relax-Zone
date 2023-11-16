@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { FaSearchengin } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { setAIsearch } from '../store/AIsearch';
+import { resetAISearch, setAIsearch } from '../store/AIsearch';
 import { addUser, removeUser } from '../store/userSlice';
 import { auth } from '../utils/firebase';
 
@@ -50,7 +50,7 @@ const Header = () => {
 
   return (
     <header className="absolute top-0 left-0 flex items-center justify-between z-50 pr-5 md:pr-20 w-full">
-      <Link to="/">
+      <Link onClick={() => dispatch(resetAISearch())} to="/browse">
         {' '}
         <img src="/relax-logo.png" alt="logo" className=" h-14 sm:h-20" />
       </Link>

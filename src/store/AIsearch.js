@@ -10,7 +10,10 @@ const AIslice = createSlice({
   initialState,
   reducers: {
     setAIsearch: (state) => {
-      state.isSearched = !state.isSearched;
+      state.isSearched = true;
+    },
+    resetAISearch: (state) => {
+      state.isSearched = false;
     },
     searchedResults: (state, action) => {
       state.isLoading = true;
@@ -33,6 +36,7 @@ export const {
   searchedResults,
   setLoadingState,
   removeLoadingState,
+  resetAISearch,
 } = AIslice.actions;
 
 export default AIslice.reducer;

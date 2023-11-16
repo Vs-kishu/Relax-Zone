@@ -15,10 +15,9 @@ const SuggestedVideos = () => {
         <ShimmerCards />
       </>
     );
-  if (!movieResults) return <h1>Not Found</h1>;
   return (
     <div className="text-white mt-5 flex flex-col">
-      {movieNames.map((movieName, index) => (
+      {movieNames?.map((movieName, index) => (
         <MoviesList
           key={movieName[index]}
           moviesCollection={movieName}

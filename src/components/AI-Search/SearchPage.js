@@ -7,7 +7,7 @@ const SearchPage = () => {
     <div className="flex justify-center">
       <div className="fixed bg-black  ">
         <img
-          className="h-screen object-contain w-full blur-xl"
+          className="h-screen object-contain w-screen blur-xl"
           src="/relax-cover.jpg"
           alt="background"
         />
