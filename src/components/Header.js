@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addUser, removeUser } from "../store/userSlice";
-import { Link, useNavigate } from "react-router-dom";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../utils/firebase";
-import { FaSearchengin } from "react-icons/fa";
-import { setAIsearch } from "../store/AIsearch";
-import { BG_IMAGE } from "../constants/constants";
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
+import { FaSearchengin } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { setAIsearch } from '../store/AIsearch';
+import { addUser, removeUser } from '../store/userSlice';
+import { auth } from '../utils/firebase';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -19,7 +18,7 @@ const Header = () => {
     signOut(auth)
       .then(() => {})
       .catch((error) => {
-        navigate("/error");
+        navigate('/error');
       });
   };
   useEffect(() => {
@@ -33,10 +32,10 @@ const Header = () => {
             name: displayName,
           })
         );
-        navigate("/browse");
+        navigate('/browse');
       } else {
         dispatch(removeUser());
-        navigate("/");
+        navigate('/');
       }
     });
 
@@ -52,14 +51,14 @@ const Header = () => {
   return (
     <header className="absolute top-0 left-0 flex items-center justify-between z-50 pr-5 md:pr-20 w-full">
       <Link to="/">
-        {" "}
-        <img src={BG_IMAGE} alt="logo" className=" h-14 sm:h-20" />
+        {' '}
+        <img src="/relax-logo.png" alt="logo" className=" h-14 sm:h-20" />
       </Link>
       {user && (
         <button
           type="button"
           onClick={() => dispatch(setAIsearch())}
-          className=" flex justify-center items-center gap-2 px-3 py-2 w-[100px] md:w-[20%] bg-gray-500 hover:bg-white rounded-lg"
+          className=" flex justify-center items-center gap-2 px-3 py-1 sm:py-2 w-[100px] md:w-[20%] bg-gray-500 hover:bg-white rounded-lg"
         >
           <FaSearchengin />
           Search
@@ -82,7 +81,7 @@ const Header = () => {
             src="https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg"
             alt="profile"
             onClick={() => setMenuOpen(!isMenuOpen)}
-            className="h-10 rounded-full cursor-pointer"
+            className="h-5 sm:h-10 rounded-full cursor-pointer"
           />
           {isMenuOpen && (
             <div className="absolute right-10 p-2 rounded-md top-16   bg-white">

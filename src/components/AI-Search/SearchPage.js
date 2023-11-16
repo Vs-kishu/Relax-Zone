@@ -1,5 +1,4 @@
 import React from 'react';
-import { BG_IMAGE } from '../../constants/constants';
 import SearchBar from './SearchBar';
 import SuggestedVideos from './SuggestedVideos';
 
@@ -9,7 +8,7 @@ const SearchPage = () => {
       <div className="fixed bg-black  ">
         <img
           className="h-screen object-contain w-full blur-xl"
-          src={BG_IMAGE}
+          src="/relax-cover.jpg"
           alt="background"
         />
       </div>
