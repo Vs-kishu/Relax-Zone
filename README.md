@@ -15,8 +15,6 @@ A Movies saerching website where user can login adn signup and Search movies as 
 - Simmer effect while handling async operations
 
 
-
-
 ## Installation
 
 Install my-project with npm
@@ -27,4 +25,9 @@ Install my-project with npm
 ```
 
 # Demo
-https://drive.google.com/file/d/1ihaeoA655fB0Jp9hf9S_QG_Cr12t2jAo/view?usp=sharing
+
+
+https://github.com/Vs-kishu/movies-world/assets/91000916/aee00e42-16c1-4909-a338-7014a302cb9d
+
+
+
