@@ -3,16 +3,16 @@
 
 # Relax-Zone
 
-A Movies saerching website where user can login adn signup and Search movies as they want
+A Movies searching website, where user can login , signup and Search movies as they want
 
 
 ## Features
 
 - Login,Signup and Guest Login, Logout
 - Fully Responsive and scalable
-- Pages -Browse, search page
-- search bar Intergrated with Open AI feature for Searching movies
-- Simmer effect while handling async operations
+- Pages - Browse and search page
+- search bar intergrated with OpenAI search feature for searching movies
+- shimmer effect while handling async fetching
 
 
 ## Installation
